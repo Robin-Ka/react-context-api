@@ -6,16 +6,21 @@ export default function Header() {
     const themeContext = useContext(ThemeContext)
     const tweetsContext = useContext(TweetsContext)
 
+    
+
     const handleCheckChange = () => {
       if(themeContext.theme === 'dark') {
+        localStorage.setItem("theme", "light")
         themeContext.setTheme('light');
       } else {
+        localStorage.setItem("theme", "dark")
         themeContext.setTheme('dark');
       }
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+      localStorage.removeItem("theme")
+      themeContext.setTheme('light');
     }
 
     return (
